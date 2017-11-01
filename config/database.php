@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +76,20 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
+        ],
+
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => env('DB_HOST', 'localhost'),
+            'port'     => 27017,
+            'database' => 'gleekr',
+            'username' => '',
+            'password' => '',
+            'use_mongo_id' => false,
+            'options' => [
+                'db' => 'admin', // Sets the authentication database required by mongo 3
+                //['replicaSet' => 'replicaSetName'], // Connect to multiple servers or replica sets
+            ]
         ],
 
     ],
