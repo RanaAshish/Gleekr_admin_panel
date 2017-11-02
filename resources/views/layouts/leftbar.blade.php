@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/users">
                         <i class="material-icons">account_box</i>
                         <span>Users</span>
                     </a>

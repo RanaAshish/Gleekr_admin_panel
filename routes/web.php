@@ -12,4 +12,5 @@
 */
 
 Route::get("/","dashboard@index");
+Route::get("/users","UserController@index");
 
