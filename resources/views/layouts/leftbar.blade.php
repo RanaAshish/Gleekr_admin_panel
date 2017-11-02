@@ -29,12 +29,36 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
-                    <a href="">
+                    <a href="/">
                         <i class="material-icons">home</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
+                    <a href="/">
+                        <i class="material-icons">account_box</i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="material-icons">assignment</i>
+                        <span>Activities</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="material-icons">notifications</i>
+                        <span>Push Notification</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="material-icons">settings</i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <!-- <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">widgets</i>
                         <span>Widgets</span>
@@ -79,7 +103,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- #Menu -->

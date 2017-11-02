@@ -11,8 +11,5 @@
 |
 */
 
-Route::get('/', function () {	
-    return view('dashboard');
-});
+Route::get("/","dashboard@index");
 
-Route::get("users","dashboard@index");
