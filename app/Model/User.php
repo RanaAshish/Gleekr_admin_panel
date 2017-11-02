@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Moloquent\Eloquent\Model as Eloquent;
 
