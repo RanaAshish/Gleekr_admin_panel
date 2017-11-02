@@ -12,4 +12,4 @@
 */
 
 Route::get("/","dashboard@index");
-
+Route::get("/activities","Activities@index");
