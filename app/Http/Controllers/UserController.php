@@ -13,7 +13,7 @@ class UserController extends Controller
     }
 
     public function user_profile($id){
-        $user = User::find($id);
+        $user = json_decode(User::find($id),TRUE);
         return view('user_profile',["user"=>$user]); 
     }
 }

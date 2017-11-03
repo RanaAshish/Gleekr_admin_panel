@@ -13,7 +13,9 @@
                     </h2>
                 </div>
                 <div class="body">
-                    
+                    <div class="col-sm-6">
+                        <img src="http://52.76.246.237:3000{{$user["image"]}}"/>
+                    </div>
                 </div>
             </div>
         </div>
