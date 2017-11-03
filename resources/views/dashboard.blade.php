@@ -15,7 +15,9 @@
                     </div>
                     <div class="content">
                         <div class="text">Total Users</div>
-                        <div class="number count-to" data-from="0" data-to="{{$user_cnt}}" data-speed="15" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{$user_cnt}}" data-speed="15" data-fresh-interval="20">
+                            {{$user_cnt}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,7 +28,9 @@
                     </div>
                     <div class="content">
                         <div class="text">New Users</div>
-                        <div class="number count-to" data-from="0" data-to="257" data-speed="{{$nuser_cnt}}" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="257" data-speed="{{$nuser_cnt}}" data-fresh-interval="20">
+                            {{$nuser_cnt}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,9 @@
                     </div>
                     <div class="content">
                         <div class="text">Total Activity</div>
-                        <div class="number count-to" data-from="0" data-to="{{$activity_cnt}}" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{$activity_cnt}}" data-speed="1000" data-fresh-interval="20">
+                            {{$activity_cnt}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,7 +54,9 @@
                     </div>
                     <div class="content">
                         <div class="text">New Activity</div>
-                        <div class="number count-to" data-from="0" data-to="{{$nactivity_cnt}}" data-speed="1000" data-fresh-interval="20"></div>
+                        <div class="number count-to" data-from="0" data-to="{{$nactivity_cnt}}" data-speed="1000" data-fresh-interval="20">
+                            {{$nactivity_cnt}}
+                        </div>
                     </div>
                 </div>
             </div>
