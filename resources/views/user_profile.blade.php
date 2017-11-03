@@ -16,7 +16,9 @@
                         <div class="body">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4">
-                                    <img src="{{config('constants.SERVER_URL').$user["image"]}}" alt="" class="img-rounded img-responsive" />
+                                    @if(isset($user["image"]))
+                                        <img src="{{config('constants.SERVER_URL').$user["image"]}}" alt="" class="img-rounded img-responsive" />
+                                    @endif
                                 </div>
                                 <div class="col-sm-6 col-md-8 content">
                                     <h4>
