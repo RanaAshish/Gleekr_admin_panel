@@ -13,4 +13,4 @@
 
 Route::get("/","dashboard@index");
 Route::get("/users","UserController@index");
-
+Route::get("/activities","Activities@index");

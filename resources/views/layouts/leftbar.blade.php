@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/activities">
                         <i class="material-icons">assignment</i>
                         <span>Activities</span>
                     </a>
