@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Users')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -30,7 +31,7 @@
                                 @foreach ($users as $user)
                                 
                                 <tr>
-                                    <td>{{$user["_id"]}}</td>
+                                    <td><a href="/users/{{$user["_id"]}}">{{$user["_id"]}}</a></td>
                                     <td>{{ isset($user['name']) ? $user['name'] : 'N/A' }}</td>
                                     <td>{{ isset($user['mobileNo']) ? $user['mobileNo'] : 'N/A' }}</td>
                                     <td>{{ date('d M, Y', strtotime($user['modifiedAt']['$date']['$numberLong'])) }}</td>
