@@ -33,10 +33,10 @@
 				                    	<td>{{$activity['_id']}}</td>
 				                        <td>{{$activity['name']}}</td>
 				                        <td>Going</td>
-				                        <td>{{date('d M, Y',strtotime($activity['startDate']))}}</td>
-				                        <td>{{date('d M, Y',strtotime($activity['endDate']))}}</td>
-				                        <td>{{date('H.s A',strtotime($activity['startTime']))}}</td>
-				                        <td>{{date('H.s A',strtotime($activity['endTime']))}}</td>
+				                        <td>{{date('d M, y', json_decode($activity['startDate'], true))}}</td>
+				                        <td>{{date('d M, y', json_decode($activity['endDate'], true))}}</td>
+				                        <td>{{date('H.s A', json_decode($activity['startTime'], true))}}</td>
+				                        <td>{{date('H.s A', json_decode($activity['endTime'], true))}}</td>
 				                        <td>{{$activity['location']}}</td>
 				                        <td>{{$activity['costPerPerson']}}</td>
 				                        <td>{{$activity['noOfParticipants']}}</td>

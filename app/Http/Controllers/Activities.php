@@ -9,7 +9,7 @@ use \Carbon\Carbon;
 class Activities extends Controller
 {
     public function index() {
-    	$data['activities'] = Activity::where('isDeleted', false)->get();
+    	$data['activities'] = Activity::where('isDeleted', false)->with('user')->get();
     	return view('activity', $data);
     }
 }
