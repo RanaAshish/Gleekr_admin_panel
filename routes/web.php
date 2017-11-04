@@ -18,3 +18,9 @@ Route::get("/users/{id}","UserController@user_profile");
 
 Route::get("/activities","Activities@index");
 Route::get("/notifications","NotificationController@index");
+
+// route to show the login form
+Route::get('login','Controller@showLogin');
+
+// route to process the form
+Route::post('login','Controller@doLogin');
