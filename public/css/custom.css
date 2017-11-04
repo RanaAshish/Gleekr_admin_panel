@@ -1,0 +1,19 @@
+.profile .content{
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0 0 0;
+}
+.profile .image-container{
+    position: relative;
+    height: 210px;
+}
+.profile .image-container .image-wrapper{
+    overflow: hidden;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
