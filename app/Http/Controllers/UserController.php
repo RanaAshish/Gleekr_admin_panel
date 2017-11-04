@@ -8,12 +8,12 @@ use App\Model\User;
 class UserController extends Controller
 {
     public function index(){
-        $all_users = json_decode(User::all(),TRUE);
+        $all_users = User::all();
         return view('users',["users"=>$all_users]);   
     }
 
     public function user_profile($id){
-        $user = json_decode(User::find($id),TRUE);
+        $user = User::find($id);
         return view('user_profile',["user"=>$user]); 
     }
 }

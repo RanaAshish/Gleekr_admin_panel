@@ -14,7 +14,6 @@
                     </div>
                     <div class="body">
                         <div class="table-responsive">
-
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
@@ -29,12 +28,11 @@
 
                                 <tbody>
                                     @foreach ($users as $user)
-
                                     <tr>
                                         <td><a href="/users/{{$user["_id"]}}">{{$user["_id"]}}</a></td>
                                         <td>{{ isset($user['name']) ? $user['name'] : 'N/A' }}</td>
                                         <td>{{ isset($user['mobileNo']) ? $user['mobileNo'] : 'N/A' }}</td>
-                                        <td>{{ date('d M, Y', strtotime($user['modifiedAt']['$date']['$numberLong'])) }}</td>
+                                        <td>{{ date('d M, Y', strtotime($user['createdAt'])) }}</td>
                                         <td>{{ isset($user['activities']) ? count($user['activities']) : 'N/A' }}</td>
                                         <td>{{ isset($user['country']) ? $user['country'] : 'N/A' }}</td>
                                     </tr>

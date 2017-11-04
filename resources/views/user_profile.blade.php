@@ -15,10 +15,14 @@
                         </div>
                         <div class="body">
                             <div class="row">
-                                <div class="col-sm-6 col-md-4">
-                                    @if(isset($user["image"]))
-                                        <img src="{{config('constants.SERVER_URL').$user["image"]}}" alt="" class="img-rounded img-responsive" />
-                                    @endif
+                                <div class="col-sm-6 col-md-4 image-container"> 
+                                    <div class="image-wrapper">
+                                        @if(isset($user["image"]))
+                                            <img src="{{config('constants.SERVER_URL').$user["image"]}}" alt="" class="img-rounded img-responsive" />
+                                        @else
+                                            <img src="{{url('/')}}/images/default_user.png" alt="" class="img-rounded img-responsive" />
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 col-md-8 content">
                                     <h4>
@@ -26,17 +30,27 @@
                                     </h4>
                                     <p>
                                         <i class="glyphicon glyphicon-map-marker"></i>
-                                        {{isset($user['city']) ? $user['city'] : ''}},
-                                        {{isset($user['state']) ? $user['state'] : ''}},
-                                        {{isset($user['country']) ? $user['country'] : ''}},
+                                        {{isset($user['city']) ? $user['city'] : ''}}
+                                        {{isset($user['state']) ? $user['state'] : ''}}
+                                        {{isset($user['country']) ? $user['country'] : ''}}
                                     </p>
                                     <p>
                                         <i class="glyphicon glyphicon-envelope"></i>
-                                        {{isset($user['email']) ? $user['email'] : ''}}
+                                        {{(isset($user['email']) && !empty($user['email'])) ? $user['email'] : 'N/A'}}
                                     </p>
                                     <p>
                                         <i class="glyphicon glyphicon-gift"></i>
-                                        {{ date('d M, Y', strtotime($user['modifiedAt']['$date']['$numberLong'])) }}
+                                        {{ date('d M, Y', strtotime($user['createdAt'])) }}
+                                    </p>
+                                    <p>
+                                        @if($user['isDeleted'] == "true")
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                            Active
+                                        @else
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                            InActive
+                                        @endif
+                                        
                                     </p>
                                 </div>
                             </div>
