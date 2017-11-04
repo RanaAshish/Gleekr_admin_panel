@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/notifications">
                         <i class="material-icons">notifications</i>
                         <span>Push Notification</span>
                     </a>
