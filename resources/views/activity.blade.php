@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Activities')
 @section('content')
 <section class="content">
 	<div class="container-fluid">
@@ -17,7 +18,6 @@
 				                    <tr>
 				                        <th>ID</th>
 				                        <th>Name</th>
-				                        <th>Status</th>
 				                        <th>Start Date</th>
 				                        <th>End Date</th>
 				                        <th>StartTime</th>
@@ -32,7 +32,6 @@
 				                    <tr>
 				                    	<td>{{$activity['_id']}}</td>
 				                        <td>{{$activity['name']}}</td>
-				                        <td>---</td>
 				                        <td>{{date('d M, Y', strtotime($activity['startDate']))}}</td>
 				                        <td>{{date('d M, Y', strtotime($activity['endDate']))}}</td>
 				                        <td>{{date('H.s A', strtotime($activity['startTime']))}}</td>
