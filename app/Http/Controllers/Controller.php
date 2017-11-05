@@ -53,4 +53,9 @@ class Controller extends BaseController
 			}
 		}
 	}
+
+	public function logout(Request $request) {
+		$request->session()->flush();
+		return redirect('login');
+	}
 }
