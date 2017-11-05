@@ -22,5 +22,8 @@ Route::get("/notifications","NotificationController@index");
 // route to show the login form
 Route::get('login','Controller@showLogin');
 
+// route to logout
+Route::get('logout','dashboard@logout');
+
 // route to process the form
 Route::post('login','Controller@doLogin');
