@@ -24,9 +24,4 @@ class dashboard extends Controller
         $data['nactivity_cnt'] = Activity::where('startDate', '>=', Carbon::now()->subMonth())->count();
         return view('dashboard', $data);   
     }
-
-    public function logout(Request $request){
-    	$request->session()->forget('logged_in');
-    	Redirect::to('login')->send();
-    }
 }
