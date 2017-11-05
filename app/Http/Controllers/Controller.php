@@ -7,16 +7,21 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function showLogin()
+    public function showLogin(Request $request)
 	{
-	    // show the form
-	    return view('login');
+		if($request->session()->has('logged_in') && $request->session()->get('logged_in') == "true"){
+			Redirect::to('/')->send();
+		} else {
+		    // show the form
+		    return view('login');
+		}
 	}
 
 	public function doLogin(Request $request)
@@ -54,8 +59,5 @@ class Controller extends BaseController
 		}
 	}
 
-	public function logout(Request $request) {
-		$request->session()->flush();
-		return redirect('login');
-	}
+	
 }
