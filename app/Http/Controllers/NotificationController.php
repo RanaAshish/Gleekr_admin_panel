@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Model\User;
 
 class NotificationController extends Controller
 {
@@ -14,6 +15,9 @@ class NotificationController extends Controller
 	}
 
     public function index(){
-        return view('notification');
+    	$data['users'] = User::all();
+    	$data['active_users'] = User::where('isDeleted', false)->get();
+    	$data['inactive_users'] = User::where('isDeleted', true)->get();
+        return view('notification', $data);
     }
 }
