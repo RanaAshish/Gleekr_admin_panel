@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\User;
+use App\Model\Activity;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
