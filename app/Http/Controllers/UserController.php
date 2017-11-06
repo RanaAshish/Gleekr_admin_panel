@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\User;
+use App\Model\Activity;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -21,6 +22,7 @@ class UserController extends Controller
 
     public function user_profile($id){
         $user = User::find($id);
-        return view('user_profile',["user"=>$user]); 
+        $user_activity = Activity::where('user_id', new \MongoDB\BSON\ObjectID($id))->get();
+        return view('user_profile',["user"=>$user,"activities"=>$user_activity]); 
     }
 }

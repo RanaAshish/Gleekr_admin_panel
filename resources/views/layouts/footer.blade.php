@@ -1,5 +1,4 @@
-<!-- Jquery Core Js -->
-<script src="plugins/jquery/jquery.min.js"></script>
+
 
 <!-- Bootstrap Core Js -->
 <script src="plugins/bootstrap/js/bootstrap.js"></script>
@@ -32,5 +31,10 @@
 
 
 <script src="/js/admin.js"></script>
+
+<!-- SweetAlert Plugin Js -->
+<script src="plugins/sweetalert/sweetalert.min.js"></script>
+
 <!-- Demo Js -->
 <script src="js/demo.js"></script>
+
