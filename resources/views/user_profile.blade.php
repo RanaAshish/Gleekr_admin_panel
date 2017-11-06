@@ -43,7 +43,7 @@
                                         {{ date('d M, Y', strtotime($user['createdAt'])) }}
                                     </p>
                                     <p>
-                                        @if($user['isDeleted'] == "true")
+                                        @if(!$user['isDeleted'])
                                         <i class="glyphicon glyphicon-ok"></i>
                                         Active
                                         @else
@@ -55,7 +55,9 @@
                                 </div>
                                 <div class="col-sm-12 text-right">
                                     <button type="button" class="btn btn-danger waves-effect">Block</button>
-                                    <button type="button" class="btn btn-primary waves-effect" id="delete">Delete</button>
+                                    @if(!$user['isDeleted'])
+                                        <button type="button" class="btn btn-primary waves-effect" id="delete">Delete</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -124,7 +126,8 @@
                 confirmButtonText: "Yes, delete it!",
                 closeOnConfirm: false
             }, function () {
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                console.log("{{url('/').'/users/delete/'.$user['id'].'/true'}}");
+                location.href = "{{url('/').'/users/delete/'.$user['id'].'/true'}}"
             });           
         });
     });

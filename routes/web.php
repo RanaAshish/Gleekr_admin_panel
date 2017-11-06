@@ -15,6 +15,7 @@ Route::get("/","dashboard@index");
 
 Route::get("/users","UserController@index");
 Route::get("/users/{id}","UserController@user_profile");
+Route::get("/users/delete/{id}/{status}","UserController@user_toggle_delete");
 
 Route::get("/activities","Activities@index");
 Route::get("/notifications","NotificationController@index");
