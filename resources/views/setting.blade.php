@@ -14,11 +14,15 @@
                             </h2>
                         </div>
                         <div class="body">
-                            {{ dump($errors->all()) }}
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
-                                    <div>{{ $error }}</div>
+                                <p>
+                                    {{ $error }}
+                                </p>
                                 @endforeach
-                            
+                            </div>
+                            @endif
                             <form class="form-horizontal" method="post" action="{{url('/').'/changePassword'}}">
                                 {{ csrf_field() }}
                                 <div class="row clearfix">
@@ -28,7 +32,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="password" name="old_password" class="form-control" placeholder="Old password">
+                                                <input  type="password" name="old_password" class="form-control" placeholder="Old password">
                                             </div>
                                         </div>
                                     </div>
@@ -40,7 +44,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="password" name="new_password" class="form-control" placeholder="New password">
+                                                <input  type="password" name="new_password" class="form-control" placeholder="New password">
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +56,7 @@
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="password" name="retype_new_password" class="form-control" placeholder="Retype new password">
+                                                <input  type="password" name="retype_new_password" class="form-control" placeholder="Retype new password">
                                             </div>
                                         </div>
                                     </div>

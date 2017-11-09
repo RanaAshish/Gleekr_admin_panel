@@ -65,33 +65,25 @@ class Controller extends BaseController {
     }
 
     public function changePassword(Request $request) {
-        /*$id = "5a04356b285fafc4a550e63c";
+        $id = "5a04356b285fafc4a550e63c";
+        Validator::extend('checkOldPwd', function($attribute, $value, $parameters) {
+            return $value == 'foo';
+        });
+        
         $rules = array(
             'old_password' => 'required',
             'new_password' => 'required',
             'retype_new_password' => 'required|same:new_password',
         );
-//        $user = User::find($id);
+        $user = User::find($id);
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            dd($validator);
             return redirect('setting')
                             ->withErrors($validator)
                             ->withInput();
         } else {
             
-        }*/
-         $validator = Validator::make($request->all(), [
-            'old_password' => 'required|unique:posts|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            dd($validator);
-            return redirect('post/create')
-                        ->withErrors($validator)
-                        ->withInput();
         }
-
     }
 
 }
