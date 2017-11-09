@@ -54,7 +54,7 @@
                                     </p>
                                 </div>
                                 <div class="col-sm-12 text-right">
-                                    <button type="button" class="btn btn-danger waves-effect">Block</button>
+                                    <!--<button type="button" class="btn btn-danger waves-effect">Block</button>-->
                                     @if(!$user['isDeleted'])
                                         <button type="button" class="btn btn-primary waves-effect" id="delete">Delete</button>
                                     @endif

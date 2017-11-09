@@ -28,11 +28,10 @@ class UserController extends Controller {
     }
 
     public function user_toggle_delete($id, $flag = true) {
-        DB::connection('mongodb')->collection('users')->where('_id',$id)
-                       ->update(array("isDeleted"=>true), ['upsert' => true]);
+        DB::connection('mongodb')->collection('users')->where('_id', $id)
+                ->update(array("isDeleted" => true), ['upsert' => true]);
         return redirect()->action(
-                'UserController@user_profile', ['id' => $id]
+                        'UserController@user_profile', ['id' => $id]
         );
     }
-
 }

@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/setting">
                         <i class="material-icons">settings</i>
                         <span>Settings</span>
                     </a>
