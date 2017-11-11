@@ -9,7 +9,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 use App\Model\User;
+use App\Model\Group;
+use App\Model\Activity;
+use App\Model\Team;
 
 class Controller extends BaseController {
 
@@ -47,10 +51,12 @@ class Controller extends BaseController {
                 'password' => $request->get('password')
             );
 
+            $row = json_decode(Team::where($userdata)->first(), true);
 
-            if ($userdata['username'] == "Gleekr" && $userdata['password'] == 'Gleekr') {
+            if (!empty($row)) {
                 // attempt to do the login
                 $request->session()->put('logged_in', 'true');
+                $request->session()->put('user', $row);
                 return redirect('/');
             } else {
                 // validation not successful, send back to form
@@ -65,25 +71,31 @@ class Controller extends BaseController {
     }
 
     public function changePassword(Request $request) {
-        $id = "5a04356b285fafc4a550e63c";
-        $user = User::find($id);
-        Validator::extend('checkOldPwd', function($attribute, $value, $parameters) {
-            return $value == 'foo';
-        });
-        
         $rules = array(
             'old_password' => 'required',
             'new_password' => 'required',
             'retype_new_password' => 'required|same:new_password',
         );
         $validator = Validator::make($request->all(), $rules);
+        $user = $request->session()->get('user');
         if ($validator->fails()) {
             return redirect('setting')
                             ->withErrors($validator)
                             ->withInput();
         } else {
-            
+            if ((request('old_password') != $user['password'])) {
+                return back()->with('error', 'The specified password does not match the database password.');
+            } else {
+                DB::connection('mongodb')->collection('teams')->where('_id', $user['_id'])
+                        ->update(array("password" => request('new_password')), ['upsert' => true]);
+                return redirect('logout');
+            }
         }
+    }
+
+    public function deleteDb(Request $request) {
+        Group::turncate();
+        return back()->with('succ', 'Database drop successfully.');
     }
 
 }
