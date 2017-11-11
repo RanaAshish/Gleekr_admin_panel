@@ -2,7 +2,8 @@
 namespace App;
 namespace App\Model;
 
-class User extends BaseModel {
+class Bot extends BaseModel {
+         protected $collection = 'bot';
 
 	protected $dates = ['modifiedAt','createdAt'];
 	// public function activity() {

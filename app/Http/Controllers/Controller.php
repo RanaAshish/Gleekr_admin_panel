@@ -14,6 +14,9 @@ use App\Model\User;
 use App\Model\Group;
 use App\Model\Activity;
 use App\Model\Team;
+use App\Model\Bot;
+use App\Model\Contact;
+use App\Model\Otp;
 
 class Controller extends BaseController {
 
@@ -50,6 +53,7 @@ class Controller extends BaseController {
                 'username' => $request->get('username'),
                 'password' => $request->get('password')
             );
+
 
             $row = json_decode(Team::where($userdata)->first(), true);
 
@@ -94,7 +98,14 @@ class Controller extends BaseController {
     }
 
     public function deleteDb(Request $request) {
-        Group::turncate();
+        // Activity::truncate();
+        // User::truncate();
+        
+        // Group::truncate();
+        
+        // Bot::truncate();
+        // Contact::truncate();
+        Otp::truncate();
         return back()->with('succ', 'Database drop successfully.');
     }
 

@@ -2,7 +2,8 @@
 namespace App;
 namespace App\Model;
 
-class User extends BaseModel {
+class Otp extends BaseModel {
+         protected $collection = 'otp';
 
 	protected $dates = ['modifiedAt','createdAt'];
 	// public function activity() {

@@ -4,5 +4,5 @@ namespace App\Model;
 
 class Team extends BaseModel {
 
-	protected $dates = ['created_at','createdAt'];
+	protected $dates = ['modifiedAt','createdAt'];
 }

@@ -2,7 +2,8 @@
 namespace App;
 namespace App\Model;
 
-class User extends BaseModel {
+class Contact extends BaseModel {
+         protected $collection = 'Contact';
 
 	protected $dates = ['modifiedAt','createdAt'];
 	// public function activity() {
