@@ -19,34 +19,35 @@
         </div>
         <!-- #User Info -->
         <!-- Menu -->
+        
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active">
+                <li class="{{Request::path() == '/' ? 'active' : '' }}">
                     <a href="/">
                         <i class="material-icons">home</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{Request::path() == 'users' ? 'active' : '' }}">
                     <a href="/users">
                         <i class="material-icons">account_box</i>
                         <span>Users</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{Request::path() == 'activities' ? 'active' : '' }}">
                     <a href="/activities">
                         <i class="material-icons">assignment</i>
                         <span>Activities</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{Request::path() == 'notifications' ? 'active' : '' }}">
                     <a href="/notifications">
                         <i class="material-icons">notifications</i>
                         <span>Push Notification</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{Request::path() == 'setting' ? 'active' : '' }}">
                     <a href="/setting">
                         <i class="material-icons">settings</i>
                         <span>Settings</span>
