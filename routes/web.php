@@ -25,6 +25,7 @@ Route::get('login', 'Controller@showLogin');
 
 Route::get('setting', 'Controller@setting');
 Route::post('changePassword', 'Controller@changePassword');
+Route::get('deleteDb', 'Controller@deleteDb');
 // route to process the form
 Route::post('login', 'Controller@doLogin');
 Route::get('logout', 'dashboard@logout');

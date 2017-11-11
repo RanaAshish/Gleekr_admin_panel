@@ -23,6 +23,13 @@
                                 @endforeach
                             </div>
                             @endif
+                            @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                <p>
+                                    {{ session()->get('error') }}
+                                </p>
+                            </div>
+                            @endif
                             <form class="form-horizontal" method="post" action="{{url('/').'/changePassword'}}">
                                 {{ csrf_field() }}
                                 <div class="row clearfix">
@@ -73,22 +80,45 @@
                 </div>
             </div>
         </div>
-
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-12 col-sm-6 col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Delete All
+                            </h2>
+                        </div>
+                        <div class="body">
+                            
+                            @if (session()->has('succ'))
+                            <div class="alert alert-success">
+                                <p>
+                                    {{ session()->get('succ') }}
+                                </p>
+                            </div>
+                            @endif
+                            <a href="javascript:;" id="delete" class="btn btn-primary">Delete The Database</a>       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
 <script>
     $(function () {
-        $("#delete").click(function () {
+        $("#delete").click(function (e) {
+            e.preventDefault();
             swal({
                 title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
+                text: "You want to delete whole Database.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, delete it!",
                 closeOnConfirm: false
             }, function () {
-                console.log("{{url('/').'/users/delete/'}}");
-                location.href = "{{url('/').'/users/delete/true'}}"
+                location.href = "{{url('/').'/deleteDb'}}"
             });
         });
     });
