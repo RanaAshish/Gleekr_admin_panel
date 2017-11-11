@@ -29,13 +29,13 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="{{Request::path() == 'users' ? 'active' : '' }}">
+                <li class="{{Request::path() == 'users' || explode('/',Request::path())[0] == 'users' ? 'active' : '' }}">
                     <a href="/users">
                         <i class="material-icons">account_box</i>
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="{{Request::path() == 'activities' ? 'active' : '' }}">
+                <li class="{{Request::path() == 'activities'  || explode('/',Request::path())[0] == 'activities' ? 'active' : '' }}">
                     <a href="/activities">
                         <i class="material-icons">assignment</i>
                         <span>Activities</span>
