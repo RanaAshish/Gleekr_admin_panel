@@ -4,6 +4,6 @@ namespace App\Model;
 
 class Group extends BaseModel {
 
-         protected $collection = 'Group';
+ 	protected $collection = 'group';
 	protected $dates = ['modifiedAt','createdAt'];
 }

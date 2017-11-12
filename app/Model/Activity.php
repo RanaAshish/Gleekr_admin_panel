@@ -6,6 +6,7 @@ namespace App\Model;
 
 class Activity extends BaseModel {
 
+	protected $collection = 'activities';
     protected $dates = ['created_at', 'endDate', 'startDate', 'startTime'];
 
     public function user() {

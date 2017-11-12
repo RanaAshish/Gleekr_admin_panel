@@ -3,9 +3,6 @@ namespace App;
 namespace App\Model;
 
 class User extends BaseModel {
-
+	protected $collection = 'users';
 	protected $dates = ['modifiedAt','createdAt'];
-	// public function activity() {
-	// 	return $this->hasMany(Activity::class);
-	// }
 }

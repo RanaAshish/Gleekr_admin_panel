@@ -98,13 +98,11 @@ class Controller extends BaseController {
     }
 
     public function deleteDb(Request $request) {
-        // Activity::truncate();
-        // User::truncate();
-        
-        // Group::truncate();
-        
-        // Bot::truncate();
-        // Contact::truncate();
+        Activity::truncate();
+        User::truncate();
+        Group::truncate();
+        Bot::truncate();
+        Contact::truncate();
         Otp::truncate();
         return back()->with('succ', 'Database drop successfully.');
     }
