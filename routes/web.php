@@ -19,6 +19,7 @@ Route::get("/users/delete/{id}/{status}", "UserController@user_toggle_delete");
 
 Route::get("/activities", "Activities@index");
 Route::get("/notifications", "NotificationController@index");
+Route::post("/notifications", "NotificationController@sendNotification");
 
 // route to show the login form
 Route::get('login', 'Controller@showLogin');

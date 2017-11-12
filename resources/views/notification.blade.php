@@ -24,20 +24,20 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="home">
-                                <form>
+                                <form method="post" action="/notifications">
+                                    {{csrf_field()}}
                                     <div class="form-group">
                                         <label>Select User</label>
-                                        <select class="ms form-control" name="user">
+                                        <select class="ms form-control" name="user" required="">
+                                            <option value="">Select User</option>
                                             @foreach($users as $user)
                                             <option value="{{$user['_id']}}"> {{$user['name']}} </option>
                                             @endforeach
                                         </select>
-
-                                        
                                     </div>
                                     <div class="form-group">
                                         <labe>Send Push Notification :</labe>
-                                        <input type="" name="msg"  class="form-control" placeholder="write messages here...." />
+                                        <textarea name="msg"  class="form-control" placeholder="write messages here...."  required="" ></textarea>
                                     </div>
                                     <div>
                                         <button class="btn btn-primary">Send</button>
