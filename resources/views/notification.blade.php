@@ -13,6 +13,13 @@
                         </h2>
                     </div>
                     <div class="body">
+                        @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            <p>
+                                {{ session()->get('error') }}
+                            </p>
+                        </div>
+                        @endif
                         @if (session()->has('succ'))
                         <div class="alert alert-success">
                             <p>
@@ -75,7 +82,31 @@
                         </h2>
                     </div>
                     <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Message</th>
+                                        <th>To Users</th>
+                                        <th>Message status</th>
+                                        <th>Reached users</th>
+                                        <th>Message time</th>
+                                    </tr>
+                                </thead>
 
+                                <tbody>
+                                    @foreach ($messages as $message)
+                                    <tr>
+                                        <td>{{ isset($message['message']) ? $message['message'] : 'N/A' }}</td>
+                                        <td>{{ isset($message['target_user']) ? $message['target_user'] : 'N/A' }}</td>
+                                        <td>Successfully Sent</td>
+                                        <td>{{ isset($message['user_id']) ? count($message['user_id']) : '0' }}</td>
+                                        <td>{{ date('d M, Y', strtotime($message['createdAt'])) }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
