@@ -101,7 +101,7 @@
                                         <td>{{ isset($message['target_user']) ? $message['target_user'] : 'N/A' }}</td>
                                         <td>Successfully Sent</td>
                                         <td>{{ isset($message['user_id']) ? count($message['user_id']) : '0' }}</td>
-                                        <td>{{ date('d M, Y', strtotime($message['createdAt'])) }}</td>
+                                        <td>{{ date('d M, Y', strtotime($message['created_at'])) }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
