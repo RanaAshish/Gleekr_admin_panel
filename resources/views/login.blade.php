@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <title>Gleekr - Login</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -84,12 +84,8 @@
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
-    <!-- Validation Plugin Js -->
-    <script src="plugins/jquery-validation/jquery.validate.js"></script>
-
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-in.js"></script>
 </body>
 
 </html>

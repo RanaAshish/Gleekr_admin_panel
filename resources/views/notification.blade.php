@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'User Profile')
+@section('title', 'Push Notification')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -13,132 +13,91 @@
                         </h2>
                     </div>
                     <div class="body">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" data-toggle="tab" aria-expanded="false">HOME</a></li>
-                            <li role="presentation" class=""><a href="#profile" data-toggle="tab" aria-expanded="true">All User</a></li>
-                            <li role="presentation" class=""><a href="#messages" data-toggle="tab" aria-expanded="false">Active User</a></li>
-                            <li role="presentation" class=""><a href="#settings" data-toggle="tab" aria-expanded="false">In-Active User</a></li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade active in" id="home">
-                                <form method="post" action="/notifications">
-                                    {{csrf_field()}}
-                                    <div class="form-group">
-                                        <label>Select User</label>
-                                        <select class="ms form-control" name="user" required="">
-                                            <option value="">Select User</option>
-                                            @foreach($users as $user)
-                                            <option value="{{$user['_id']}}"> {{$user['name']}} </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <labe>Send Push Notification :</labe>
+                        @if (session()->has('succ'))
+                        <div class="alert alert-success">
+                            <p>
+                                {{ session()->get('succ') }}
+                            </p>
+                        </div>
+                        @endif
+                        <form method="post" action="/notifications">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <div class="demo-radio-button">
+                                    <input name="group" value="to_user" type="radio" id="radio_1" class="with-gap radio-col-red" checked="">
+                                    <label for="radio_1">Send Notification to single user</label>
+                                    <input name="group" value="to_group" type="radio" id="radio_2" class="with-gap radio-col-pink">
+                                    <label for="radio_2">Send to Group</label>
+                                </div>
+                            </div>
+                            <div class="form-group"  id="GroupSelect">
+                                <label>Select Group</label>
+                                <div class="form-line">
+                                    <select class="ms form-control show-tick"  name="groupselect">
+                                        <option value="all">All</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" id="UserSelect">
+                                <label>Select User</label>
+                                <div class="form-line">
+                                    <select class="ms form-control"  name="userselect">
+                                        @foreach($users as $user)
+                                        <option value="{{$user['_id']}}"> {{$user['name']}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <labe>Send Push Notification :</label>
+                                    <div class="form-line">
                                         <textarea name="msg"  class="form-control" placeholder="write messages here...."  required="" ></textarea>
                                     </div>
-                                    <div>
-                                        <button class="btn btn-primary">Send</button>
-                                    </div>
-                                </form>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="profile">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>User ID</th>
-                                                <th>Username</th>
-                                                <th>Mobile No.</th>
-                                                <th>Member Since</th>
-                                                <th>Activity Count</th>
-                                                <th>Country</th>
-                                            </tr>
-                                        </thead>
+                            <div>
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
+                        </form>
 
-                                        <tbody>
-                                            @foreach ($users as $user)
-                                            <tr>
-                                                <td><a href="/users/{{$user['_id']}}">{{$user["_id"]}}</a></td>
-                                                <td>{{ isset($user['name']) ? $user['name'] : 'N/A' }}</td>
-                                                <td>{{ isset($user['mobileNo']) ? $user['mobileNo'] : 'N/A' }}</td>
-                                                <td>{{ date('d M, Y', strtotime($user['createdAt'])) }}</td>
-                                                <td>{{ isset($user['activities']) ? count($user['activities']) : 'N/A' }}</td>
-                                                <td>{{ isset($user['country']) ? $user['country'] : 'N/A' }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="messages">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>User ID</th>
-                                                <th>Username</th>
-                                                <th>Mobile No.</th>
-                                                <th>Member Since</th>
-                                                <th>Activity Count</th>
-                                                <th>Country</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach ($active_users as $user)
-                                            <tr>
-                                                <td><a href="/users/{{$user["_id"]}}">{{$user["_id"]}}</a></td>
-                                                <td>{{ isset($user['name']) ? $user['name'] : 'N/A' }}</td>
-                                                <td>{{ isset($user['mobileNo']) ? $user['mobileNo'] : 'N/A' }}</td>
-                                                <td>{{ date('d M, Y', strtotime($user['createdAt'])) }}</td>
-                                                <td>{{ isset($user['activities']) ? count($user['activities']) : 'N/A' }}</td>
-                                                <td>{{ isset($user['country']) ? $user['country'] : 'N/A' }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="settings">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>User ID</th>
-                                                <th>Username</th>
-                                                <th>Mobile No.</th>
-                                                <th>Member Since</th>
-                                                <th>Activity Count</th>
-                                                <th>Country</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach ($inactive_users as $user)
-                                            <tr>
-                                                <td><a href="/users/{{$user["_id"]}}">{{$user["_id"]}}</a></td>
-                                                <td>{{ isset($user['name']) ? $user['name'] : 'N/A' }}</td>
-                                                <td>{{ isset($user['mobileNo']) ? $user['mobileNo'] : 'N/A' }}</td>
-                                                <td>{{ date('d M, Y', strtotime($user['createdAt'])) }}</td>
-                                                <td>{{ isset($user['activities']) ? count($user['activities']) : 'N/A' }}</td>
-                                                <td>{{ isset($user['country']) ? $user['country'] : 'N/A' }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- #END# Widgets -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Messages
+                        </h2>
+                    </div>
+                    <div class="body">
 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        function change() {
+            var selectedRadio = $("input[name='group']:checked").val();
+            $('#UserSelect').hide();
+            $('#GroupSelect').hide();
+            if (selectedRadio === "to_user") {
+                $('#UserSelect').show();
+            } else {
+                $('#GroupSelect').show();
+            }
+        }
+        change();
+        $("input[name='group']").change(function () {
+            change();
+        })
+    });
+</script>
 @endsection

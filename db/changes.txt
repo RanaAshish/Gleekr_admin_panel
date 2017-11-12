@@ -1,0 +1,15 @@
+db.createCollection('team',{
+   username: String,
+   password: String,
+   userType: { type: String, enum: ["admin"] },
+   createdAt: { type: Date, default: Date.now },
+   modifiedAt: { type: Date, default: Date.now }
+})
+
+db.createCollection('push_notifications',{
+   message: String,
+   target_user:String,
+   user_id: [ObjectId],
+   team_id: ObjectId,
+   createdAt: { type: Date, default: Date.now },
+})
